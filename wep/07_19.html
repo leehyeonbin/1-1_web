@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>21.07.19 html</title>
+        <style>
+            * {
+                margin: 0; /* 바깥 여백 */
+                padding: 0; /* 안쪽 여백 */
+                box-sizing: border-box;
+            }
+
+            .container {
+                width: 1200px;
+                margin: 0 auto;
+                height: 100%;
+                /* 위아래 좌우 */
+                
+                
+            }
+            .content{
+                position: relative;
+                text-decoration: none;
+                color: #333;
+                display: flex;
+            }
+            .con_img {
+                flex: 0.5;
+                height: 150px;
+                overflow: hidden;
+                
+            }
+            .con_text {
+                flex: 1.5;
+                font-size: 0.9em;
+                padding-left: 10px;
+            }
+            .content:hover img {
+                transform: scale(1.2);
+            }
+            header {
+                /* 주석 */
+                background-color: white;
+                width: 100%;
+                height: 200px;
+                position: relative;
+            }
+            #logo {
+                width: 250px;  
+                position: absolute;
+                top: 25px;                
+            }
+            #search {
+                position: absolute;
+                top: 48px;
+                left: 300px;
+            }
+           
+            img {
+                width: 100%;
+                background-color: gold;
+            }
+            nav a {
+                color: #333333; /* 글자 색 */
+                text-decoration: none; /* 및줄 제거 */
+                font-weight: bold; /*글자 굵게*/
+                font-size: 0.9em;
+                /* em -> 현재 사이즈에서 몇 배 커지게 하는 것*/
+                flex: 1;
+                text-align: center;
+            }
+            .nav_container {
+                display: flex;
+                width: 1200px;
+                margin: 0 auto;
+            }
+            nav {
+                border-top: 1px solid #ccc;
+                background-color: white;
+                /*그림자 사용법 -> x축 y축 번짐 정도 색상 */
+                box-shadow: 0 1px 0px gray;
+                padding: 15px 0 10px 0;
+                /* 안쪽여백 : 상 우 하 좌(위부터 시계방향) */
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                display: flex;
+                 
+            }
+            nav a:hover {
+                color: #04cf5c;                
+                transition: 0.2s;
+
+            }
+            article {
+                background-color: #ffffff;
+                width: 1200px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            section {
+                border: 1px solid #ccc;
+            }
+            section:nth-child(1),section:nth-child(3) {
+                width: 69%;
+                margin-top: 10px;
+            }
+            section:nth-child(2),section:nth-child(4) {
+                width: 30%;
+                height: 300px;
+                margin-top: 10px;
+                margin-left: 10px;
+
+            }
+            #search input:nth-child(1){
+                border: 3px solid #04cf5c;
+                width:500px;
+                height:50px;
+            }
+            #search input:nth-child(2){
+                background-color: #04cf5c;
+                border: none;
+                color: white;
+                width : 50px;
+                height: 49.5px;
+                position : relative;
+                top: 1px;
+            }
+            section:nth-child(2) form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100%;
+            }
+            .login {
+                border: 1px solid #04cf5c;
+                padding: 5px;
+                width: 90%;
+                margin: 5px;
+            }
+            .login_btn {
+                background: #04cf5c;
+                color: white;
+                padding: 5px;
+                width: 90%;
+            }
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+            li {
+                width: 25%;
+                padding: 20px;
+                list-style: none; /* 불릿 제거 */
+                border: 1px solid #eee;
+                position: relative;
+            }
+            li:hover a {
+                display: flex;
+            }
+            li a {
+                text-decoration: none; /* 및줄 제거 */
+                display: none;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background: #eee;
+                position: absolute;
+                top: 0;
+                left: 0;
+                align-items: center;    
+                color: #333333;
+            }
+
+            section:nth-child(4) {
+                overflow: hidden;
+
+            }
+            @keyframes mov {
+                0% {
+                    left:  -0%;
+                }
+                30% {
+                    left: -100%;
+                }
+                60% {
+                    left: -200%;
+                }
+                100% {
+                    left: -300%;
+                }
+            }
+            .slide {
+                display: flex;
+                position: relative;
+                width: 100%;
+                animation: mov 3s infinite;
+                
+            }
+            .slide img {
+                flex: 1;
+            }
+            footer {
+                background-color: #eee;
+                border-top: 1px solid #ccc; 
+                width: 100%;
+                height: 100px;
+                margin-top: 10px;
+            }
+
+            #top_btn {
+                background: chartreuse;
+                position: fixed;
+                right: 30px;
+                bottom: 30px;
+                padding: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                color: #333;
+                box-shadow: 1px 1px 2px gray;
+                background:  white;
+
+            }
+            #top_btn:hover {
+                background: turquoise;
+                color: white;
+            }
+
+            
+
+            /*div {
+                border: 2px solid green;
+                width: 100px;
+                display: inline-block;
+            }
+            span {
+                border: 2px dotted blue;
+                width: 100px;
+                display: inline-block;
+            }*/
+
+        </style>    
+    </head>
+    <body>
+        <!-- 주석 -->
+        <!--<div>block</div>
+        <div>block</div>
+        <div>block</div>
+        <span>inline</span>
+        <span>inline</span>
+        <span>inline</span>-->
+        <a href="#" id ="top_btn">
+            ↑
+        </a>
+        
+        <header>
+            <div class="container">
+            <div id ="logo">
+                <a href="07_19.html">
+                    <img src ="../wep/resource/NaverLog.png" alt="로고">
+                </a>
+            </div>
+            <div id ="search">
+                <form>
+                    <input type="search">
+                    <input type="submit" value="검색">
+                </form>
+            </div>
+            <!-- 메뉴 -->
+            <nav>
+                <div class="nav_container">
+                    <a href="https://mail.naver.com/">메일</a>
+                    <a href="https://section.cafe.naver.com/ca-fe/">카페</a>
+                    <a href="https://section.blog.naver.com/BlogHome.naver">블로그</a>
+                    <a href="https://kin.naver.com/">지식iN</a>
+                    <a href="https://shopping.naver.com/">쇼핑</a>
+                    <a href="https://shoppinglive.naver.com/home">쇼핑LIVE</a>
+                    <a href="https://order.pay.naver.com/home">Pay</a>
+                    <a href="https://tv.naver.com/">TV</a>
+                    <a href="https://dict.naver.com/">사전</a>
+                    <a href="https://news.naver.com/">뉴스</a>
+                    <a href="https://finance.naver.com/">증권</a>
+                    <a href="https://land.naver.com/">부동산</a>
+                    <a href="https://map.naver.com/v5/?c=14114242.1532183,4183021.4560703,15,0,0,0,dh">지도</a>
+                    <a href="https://vibe.naver.com/">VIBE</a>
+                    <a href="https://book.naver.com/">책</a>
+                    <a href="https://comic.naver.com/index">웹툰</a>
+                </div>
+                
+            </nav>
+        </div>
+        </header>
+        <div class="container">
+            <article>
+            <section>
+                <ul>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://mujin.gen.ms.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                    <li>
+                        <img src="../wep/resource/Gsm_log.jpg"><a href="http://gsm.gen.hs.kr/main/main.php">내용보기</a>
+                    </li>
+                
+                </ul>
+            </section>
+            <section>
+                <form>
+                    <input type="text" placeholder="아이디" class="login">
+                    <input type="password" placeholder="비밀번호 " class="login">
+                    <input type="submit" placeholder="로그인" value="로그인" class ="login_btn">
+                </form>
+            </section>
+            <section>
+                <a class="content">
+                    <div class="con_img">
+                        <img src="../wep/resource/Vet.png">
+                    </div>
+                    <div class="con_text">
+                        <p> 비흡연 여성도 많이 생기는 재만. 대표 증상은? <br>
+                            베트남 건강 미디어 '짜이만'의 폐암 예방법은 
+                            크게 비소세포 폐암과 소세포 폐암으로 나뉘는데 
+                            비소세포폐암이 80% 이상을 차지한다. 60세 이상 고령 환자가 많은데...
+                        </p>
+                    </div>
+                </a>
+
+                <a class="content">
+                    <div class="con_img">
+                        <img src="../wep/resource/Vet.png">
+                    </div>
+                    <div class="con_text">
+                        <p> 비흡연 여성도 많이 생기는 재만. 대표 증상은? <br>
+                            베트남 건강 미디어 '짜이만'의 폐암 예방법은 
+                            크게 비소세포 폐암과 소세포 폐암으로 나뉘는데 
+                            비소세포폐암이 80% 이상을 차지한다. 60세 이상 고령 환자가 많은데...
+                        </p>
+                    </div>
+                </a>
+
+                <a class="content">
+                    <div class="con_img">
+                        <img src="../wep/resource/Vet.png">
+                    </div>
+                    <div class="con_text">
+                        <p> 비흡연 여성도 많이 생기는 재만. 대표 증상은? <br>
+                            베트남 건강 미디어 '짜이만'의 폐암 예방법은 
+                            크게 비소세포 폐암과 소세포 폐암으로 나뉘는데 
+                            비소세포폐암이 80% 이상을 차지한다. 60세 이상 고령 환자가 많은데...
+                        </p>
+                    </div>
+                </a>
+            </section>
+            <section>
+                <div class="slide">
+                    <img src="../wep/resource/NaverLog.png">
+                    <img src="../wep/resource/NaverLog.png">
+                    <img src="../wep/resource/NaverLog.png">
+                    <img src="../wep/resource/NaverLog.png">
+                </div>
+            </section>
+        </article>
+        </div>
+        
+        <footer>
+            <div class ="container">
+                <section>카피라이트</section>
+            </div>
+            
+        </footer>
+    </body>
+</html>
